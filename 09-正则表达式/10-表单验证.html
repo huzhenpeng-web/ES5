@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //手机号验证
+        var reg = /^(13[0-9]|14[5|7]|15[0|1|2|3|4|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$/
+        console.log(reg.test('15250721431'));
+
+        //QQ验证
+        var regQQ = /^[1-9]\d{4,}$/
+
+        //昵称验证
+        var regName = /^[\u4e00-\u9fa5]{2,8}$/
+        console.log(regName.test('你好'));
+
+        //短信验证
+        var regmsg = /^\d{6}$/ //6位数字
+        console.log(regmsg.test('111111'));
+
+        //密码验证
+        var regPwd = /^[\w-]{6,16}$/ //^[a-zA-Z0-9_-]{6,16}$
+        console.log(regPwd.test('hzp04551-_'));
+    </script>
+</body>
+
+</html>

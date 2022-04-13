@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var obj = {
+            id: 1,
+            name: 'andy',
+            msg: {
+                age: 18
+            }
+        }
+        var o = {}
+            // for (var i in obj) {
+            //     o[i] = obj[i]
+            // }
+            // console.log(o);
+            // obj.msg.age = 19
+            // console.log(o);
+        console.log('-----------');
+        //浅拷贝只是拷贝一层 更深层次对象级别的只拷贝引用
+        Object.assign(o, obj)
+        console.log(o);
+    </script>
+</body>
+
+</html>

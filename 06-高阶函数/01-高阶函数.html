@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 高阶函数是对其他函数进行操作的函数,它接受函数作为参数或将函数作为返回值输出 -->
+    <script>
+        function fn(callback) {
+            callback && callback();
+        }
+        fn(function() {
+            alert('hello')
+        })
+    </script>
+    <script>
+        function fn() {
+            return function() {}
+        }
+        fn()
+    </script>
+</body>
+
+</html>

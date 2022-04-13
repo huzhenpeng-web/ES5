@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //some查找数组
+        var arr = [12, 66, 51, 88]
+            //some如果找到一个匹配的值 就不会继续向下执行
+        var flag = arr.some(function(value, index) { //返回布尔值
+            return value > 90
+        })
+        console.log(flag);
+    </script>
+</body>
+
+</html>

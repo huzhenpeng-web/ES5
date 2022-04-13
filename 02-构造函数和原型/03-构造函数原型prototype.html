@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 构造函数通过原型分配的函数是所有对象所共享的 -->
+    <!-- 原型是一个对象 也称prototype为原型对象
+        作用:共享方法
+    -->
+    <script>
+        function Star(name, age) {
+            this.name = name
+            this.age = age
+        }
+        Star.prototype.sing = function() {
+            console.log(this.name + '会唱歌');
+        }
+        var zs = new Star('张三')
+        var ls = new Star('李四')
+        zs.sing()
+        ls.sing()
+        console.log(zs.sing === ls.sing);
+        console.dir(Star);
+        console.log(zs); //对象身上系统自己添加一个 __proto__指向我们构造函数的原型对象
+        //__proto__对象原型和原型对象prototype是等价的
+        //console.log(zs.__proto__ === Star.prototype);
+        //很多情况下 需要手动的利用constructor这个属性指回原来的构造函数
+        Star.prototype = {
+            constructor: Star,
+            sing: () => {
+                console.log('sing');
+            },
+            movie: () => {
+                console.log('movie');
+            }
+        }
+        console.log(Star.prototype.constructor);
+        console.log(zs.__proto__.constructor);
+        //2.一般情况下 我们的公共属性定义到构造函数里面 公共的方法我们放到原型对象身上
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    按照价格查询:<input type="text" id="text1">-<input type="text" id="text2"><button id="btn1">搜索</button> 按照名称查询:
+    <input type="text" id="text3"><button id="btn2">查询</button>
+    <table border="1" style="border-collapse:collapse">
+        <thead>
+            <td>id</td>
+            <td>产品名称</td>
+            <td>价格</td>
+            <tbody>
+
+            </tbody>
+        </thead>
+    </table>
+    <script>
+        var data = [{
+            id: 1,
+            name: '小米',
+            price: 3999
+        }, {
+            id: 2,
+            name: 'oppo',
+            price: 999
+        }, {
+            id: 3,
+            name: '华为',
+            price: 1299
+        }, {
+            id: 4,
+            name: '苹果',
+            price: 888
+        }, ]
+
+        //1.获取相应的元素
+        function f1(mydata) {
+            var tbody = document.querySelector('tbody')
+            tbody.innerHTML = ''
+            mydata.forEach(function(value, index) {
+                var tr = document.createElement('tr')
+                var Id = index + 1
+                tr.innerHTML = '<td>' + Id + '</td><td>' + value.name + ' </td><td>' + value.price + '</td>'
+                tbody.appendChild(tr)
+            })
+        }
+        f1(data)
+
+
+
+        //获取输入框的id
+        var btn1 = document.getElementById('btn1')
+        var text1 = document.getElementById('text1')
+        var text2 = document.getElementById('text2')
+
+        //按照价格筛选商品
+        btn1.onclick = () => {
+            if (text1.value == '' || text2.value == '') {
+                return alert('请重请输入!')
+            }
+            var newArr = data.filter(function(value) {
+                return value.price >= text1.value && value.price <= text2.value;
+            })
+            f1(newArr)
+        }
+
+        //按照名称筛选商品
+        var text3 = document.getElementById('text3')
+        var btn2 = document.getElementById('btn2')
+        btn2.onclick = () => {
+            if (text3.value == '') {
+                return alert('请重新输入!')
+            }
+            var arrs = []
+            var flag = data.some(function(value) {
+                if (value.name == text3.value) {
+                    arrs.push(value)
+                    return true
+                }
+            })
+            f1(arrs)
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var obj = {
+            id: 1,
+            name: '小米',
+            price: 1111
+        }
+
+        //定义新属性或者修改原属性
+        Object.defineProperty(obj, 'num', {
+            value: 222
+        })
+        Object.defineProperty(obj, 'id', {
+            value: 222
+        })
+        Object.defineProperty(obj, 'name', {
+            writable: false, //不允许修改此属性 默认false
+            enumerable: false, //默认false 不允许遍历
+            configurable: false //不允许被删除这个属性或修改 默认为false
+        })
+        console.log(obj);
+    </script>
+</body>
+
+</html>

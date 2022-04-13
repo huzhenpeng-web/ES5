@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+    变量根据作用域分为两种：全局变量和局部变量
+    1.函数内可以使用全局变量
+    2.函数外部不可以使用局部变量
+    3.函数执行完毕,本作用域的局部变量会销毁
+   -->
+    <!-- 闭包(closure)指有权访问另一个函数作用域中变量的函数 -->
+    <!-- 什么是闭包?
+    简单理解就是,一个作用域可以访问另外一个函数内部的局部变量
+  -->
+    <script>
+        //闭包:fun()这个函数作用域 访问了fn()函数里面的局部变量num
+        function fn() { //fn为变包函数
+            var num = 10;
+
+            function fun() {
+                console.log(num);
+            }
+            fun()
+        }
+        fn()
+    </script>
+</body>
+
+</html>

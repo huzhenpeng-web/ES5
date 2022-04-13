@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //字符类:[]表示有一系列字符开供选择 只要匹配其中一个就可以了
+        var reg = /[abc]/ //包含abc其中一个就为true
+        console.log(reg.test('and'));
+        console.log(reg.test('baby'));
+        console.log(reg.test('666'));
+        console.log('------------');
+        var reg1 = /^[abc]$/ //只有 a或b或c 才是true
+        console.log(reg1.test('a'));
+        console.log(reg1.test('b'));
+        console.log(reg1.test('c'));
+        console.log(reg1.test('ab'));
+        console.log('------------');
+        var reg2 = /^[a-z]$/ //26个字母任意一个都为true
+        console.log(reg2.test('w'))
+        console.log('------------');
+
+        //字符组合
+        var reg3 = /^[a-zA-Z0-9]$/ //26个字母大小写都可以和数字
+        console.log(reg3.test('W'));
+        console.log(reg3.test('5'));
+
+        console.log('------------');
+        var reg4 = /^[^a-zA-Z0-9_-]$/ //第一个^表示以..开头 第二个^表示取反 不能包括里面的内容
+        console.log(reg4.test('!'));
+    </script>
+</body>
+
+</html>

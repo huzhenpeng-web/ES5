@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+    打车起步价13(3公里内) 之后每多一公里增加5块钱 用户输入公里数就可以计算打车价格
+    如果有拥堵情况 总价格多收取10块钱费用
+   -->
+    <div>
+        打车公里数:<input type="text"> <br/>
+        <p>打车费用</p>
+    </div>
+    <script>
+        var inp = document.querySelector('input');
+        var p = document.querySelector('p')
+        var car = (function() {
+            var start = 13; //起步价
+            var total = 0; //总价
+            return {
+                price: function(m) {
+                    if (m <= 3) {
+                        total = start
+                    } else {
+                        total = start + (m - 3) * 5
+                    }
+                    return total;
+                }, //正常的总价
+                yd: function(flag) { //拥堵
+                    return flag ? total + 10 : total
+                }
+            }
+        })()
+        inp.onblur = () => {
+            p.innerHTML = "打车费用" + ""
+            car.price(inp.value)
+            var prices = car.yd(false)
+            p.innerHTML = p.innerHTML + prices
+        }
+    </script>
+</body>
+
+</html>

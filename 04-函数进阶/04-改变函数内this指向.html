@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button>点击发送</button>
+    <button>点击发送</button>
+    <button>点击发送</button>
+    <!-- call方法 -->
+    <!-- <script>
+        //改变函数内部 this指向 js提供了三种方法 call() apply() bind()
+        //1.call()
+        var o = {
+            name: 'andy'
+        }
+
+        function fn(a, b) {
+            console.log(this);
+            console.log(a + b);
+        }
+        fn.call(o, 1, 2)
+
+        //1.可以调用函数 2.可以改变函数内的this指向
+        //call()的主要作用可以用来继承
+        function Father(name, age, sex) {
+            this.name = name;
+            this.age = age;
+            this.sex = sex;
+        }
+
+        function Son(name, age, sex) {
+            Father.call(this, name, age, sex)
+        }
+        var son = new Son('刘德华', 18, '男')
+        console.log(son);
+    </script> -->
+
+    <!-- apply方法 -->
+    <!-- <script>
+        var o = {
+            name: 'andy'
+        }
+
+        function fn(arr) {
+            console.log(this + arr)
+        }
+        fn.apply(o, ['pink'])
+
+        //1.也可以调用函数 第二个也可以改变函数内部的this指向
+        //2.但是他的参数必须是数组(伪数组)
+        //3.applu的主要应用 可以利用apply借助于数学内置对象求最大值
+        var arr = [1, 2, 89, 5]
+        var max = Math.max.apply(Math, arr)
+        var min = Math.min.apply(Math, arr)
+        console.log(max);
+        console.log(min);
+    </script> -->
+
+    <!-- bind方法  绑定 捆绑-->
+    <script>
+        var o = {
+            name: 'andy'
+        }
+
+        function fn(a, b) {
+            console.log(this);
+            console.log(a + b);
+        }
+        var f = fn.bind(o, 1, 2);
+        f()
+
+        //1.不会调用原来的函数 可以改变原来函数内部的this指向
+        //2.返回的是原函数改变this之后产生的新函数
+        //3.如果有的函数我们不需要立即调用 但是又想改变这个函数内部的this指向 此时用bind
+        //4.我们有一个按钮 当我们点击了之后 就禁用这个按钮 3秒钟之后开启这个按钮
+
+        // var btn = document.querySelector('button')
+        // btn.onclick = function() {
+        //     this.disabled = true; //this指向的是btn
+        //     setTimeout(function() {
+        //         this.disabled = false; //this指向的是window
+        //     }.bind(this), 3000)
+        // }
+
+        var btns = document.getElementsByTagName('button')
+        for (var i = 0; i < btns.length; i++) {
+            btns[i].onclick = function() {
+                this.disabled = true;
+                setTimeout(function() {
+                    this.disabled = false;
+                    console.log('666');
+                }.bind(this), 1000)
+            }
+        }
+    </script>
+
+    <!-- 总结
+        相同点：
+            都可以改变函数内部的this指向
+        区别:
+            1.call和apply都会调用函数 并且改变函数内部this指向
+            2.call和apply传递的参数不一样 call传递参数aru1,aru2形式 apply必须数组形式[arg]
+            3.bind不会调用函数 可以改变函数内部this指向
+        主要应用场景:
+            1.call经常继承
+            2.apply经常跟数组有关系,比如借助于数学对象实现数组最大值和最小值
+            3.bind不调用函数 但是还想改变this指向 比如改变定时器内部的this指向       
+  -->
+</body>
+
+</html>

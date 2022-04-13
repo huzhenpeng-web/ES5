@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var student = [{
+                id: 1,
+                name: '张三',
+                school: [{
+                    id: 12,
+                    name: '清华'
+                }, {
+                    name: '北大'
+                }]
+            }, {
+                id: 2,
+                name: '李四'
+            }]
+            //输入id号 返回数据对象
+            //1.利用forEach去遍历里面的每一个对象
+        function getId(data, id) {
+            data.forEach(function(item) {
+                if (item.id == id) {
+                    console.log(item);
+                } else if (item.school && item.school.length > 0) { //取得里面的数组 并且数组不为0
+                    getId(item.school, id)
+                }
+            })
+        }
+        getId(student, 12)
+    </script>
+</body>
+
+</html>

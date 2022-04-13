@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //深拷贝拷贝多层 每一级别的数据都会拷贝
+        var obj = {
+            id: 1,
+            name: '张三',
+            msg: {
+                age: 18
+            },
+            color: ['pink', 'blue']
+        }
+        var o = {}
+
+        //封装函数
+        function deepCopy(newObj, oldObj) {
+            for (var k in oldObj) {
+                //判断我们的属性值属于哪种类型数据
+                //1.获取属性值
+                var item = oldObj[k]
+                    //2.判断这个值是否为数组
+                if (item instanceof Array) {
+                    newObj[k] = []
+                    deepCopy(newObj[k], item)
+                } else if (item instanceof Object) { //判断是否为对象
+                    newObj[k] = {}
+                    deepCopy(newObj[k], item)
+                } else { //属于简单类型
+                    newObj[k] = item
+                }
+            }
+        }
+        deepCopy(o, obj)
+
+        console.log(o);
+        obj.msg.age = 20
+        console.log(o);
+    </script>
+</body>
+
+</html>
